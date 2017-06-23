@@ -14,7 +14,7 @@ def visualization():
     spark = getSparkSessionInstance(sc.getConf())
     date, time = sys.argv[1:]
     datetime=date+" "+time
-    query="select prediction, sum(total_label) as suma from sentiment where \
+    query="select prediction, sum(total_label) as suma from sentiment1 where \
             date between cast('{}' as timestamp)- INTERVAL 1 HOUR and cast('{}' as timestamp) and label='DICTATOR' \
             group by prediction".format(datetime, datetime)
     ds=spark.sql(query)    
